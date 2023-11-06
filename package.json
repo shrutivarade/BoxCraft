@@ -1,0 +1,9 @@
+{
+  "name": "boxcraft",
+  "version": "0.0.1-alpha",
+  "source": "src/index.js",
+  "main": "dist/boxCraft.min.js",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
