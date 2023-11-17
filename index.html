@@ -4,6 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoxCraft Library</title>
+    <style>
+        /* Set the style for the body to remove default margin */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        /* Ensure that the canvas fills the width and the remaining height */
+        #boxCanvas {
+            display: block; /* Removes default margin for canvas */
+            width: 100vw; /* 100% of the viewport width */
+            height: calc(100vh - 40px); /* Remaining height taking button height into account */
+            border: 1px solid black; /* Optional: just to show canvas boundaries */
+        }
+        /* Style for the button container */
+        .button-container {
+            text-align: center; /* Center align the buttons */
+            padding: 10px; /* Add some padding around the buttons */
+            background-color: #f8f8f8; /* Give the button container a background color */
+        }
+        /* Style for buttons */
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to BoxCraft!</h1>
@@ -11,7 +37,7 @@
         <button id="createResizableBox">Create Resizable Box</button>
         <button id="createBoundingBox">Create Bounding Box</button>
     </div>
-    <canvas id="boxCanvas"></canvas>
+    <canvas id="boxCanvas" style="border:1px solid #000;"></canvas>
     <script type="module" src="src/index.js"></script>
 </body>
 </html>

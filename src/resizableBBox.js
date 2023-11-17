@@ -6,15 +6,17 @@ export class ResizableBBox extends BoxCraft {
       super(element);
       this.callback = callback;
       
-      this.canvas = element;
       this.rect = {};
-      this.handleRadius = 10;
+      this.handleRadius = 5;
       this.dragTL = this.dragBL = this.dragTR = this.dragBR = false;
       this.dragWholeRect = false;
     }
   
     init() {
+
       super.init();
+      this.canvas = this.element;
+      
       this.initCanvas();
       this.initRect();
       this.drawRectInCanvas();
@@ -85,8 +87,8 @@ export class ResizableBBox extends BoxCraft {
       // 0. inside movable rectangle
       if (this.checkInRect(mouseX, mouseY, this.rect)){
           this.dragWholeRect=true;
-          startX = mouseX;
-          startY = mouseY;
+          this.startX = mouseX;
+          this.startY = mouseY;
       }
       // 1. top left
       else if (this.checkCloseEnough(mouseX, this.rect.left) && this.checkCloseEnough(mouseY, this.rect.top)) {

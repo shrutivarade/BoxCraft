@@ -18,14 +18,6 @@ export class BBox extends BoxCraft {
 
   init() {
     super.init();
-    this.element.width = window.innerWidth;
-    this.element.height = window.innerHeight;
-    this.element.style.border = "1px solid yellow";
-    this.element.style.position = 'absolute';
-    this.element.style.top = '0';
-    this.element.style.left = '0';
-    this.element.style.zIndex = '1000';  // High value to ensure it's on top
-
     this.attachEventListeners();
   }
 
@@ -42,6 +34,7 @@ export class BBox extends BoxCraft {
     this.isDrawing = true;
     this.x1 = e.clientX;
     this.y1 = e.clientY;
+    console.log("Mouse down at: ", this.startX, this.startY);
   }
 
   mouseMove(e) {
@@ -56,6 +49,7 @@ export class BBox extends BoxCraft {
     this.isDrawing = false;
     this.x2 = e.clientX;
     this.y2 = e.clientY;
+    console.log("Mouse up at: ", this.x2, this.y2);
     this.storeCoordinates();
   }
 
