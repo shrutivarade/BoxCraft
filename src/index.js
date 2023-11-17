@@ -8,6 +8,16 @@ window.console.log('BoxCraft VERSION 0.1-alpha');
 window.BoxCraft = new BoxCraft();
 
 const canvasElement = document.getElementById('boxCanvas');
+const ctx = canvasElement.getContext('2d');
+canvasElement.width = window.innerWidth;
+canvasElement.height = window.innerHeight;
+
+const image = new Image();
+image.src = 'src/images/minions.jpg';
+
+image.onload = function() {
+    ctx.drawImage(image, 0, 0, window.innerWidth, window.innerHeight);
+};
 
 document.getElementById('createResizableBox').addEventListener('click', () => {
   let resizableBox = new ResizableBBox(canvasElement, (topleft, bottomright) => {

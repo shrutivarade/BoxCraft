@@ -6,7 +6,6 @@ export class BBox extends BoxCraft {
     super(element);
     this.callback = callback;
     
-    this.ctx = this.element.getContext('2d');
     this.isDrawing = false;
     this.startX = 0;
     this.startY = 0;
@@ -18,14 +17,15 @@ export class BBox extends BoxCraft {
 
   init() {
     super.init();
+    this.overlayCanvas.style.cursor = 'crosshair'; // Set the cursor to crosshair
     this.attachEventListeners();
   }
 
   attachEventListeners() {
-    this.element.addEventListener('mousedown', this.mouseDown.bind(this));
-    this.element.addEventListener('mousemove', this.mouseMove.bind(this));
-    this.element.addEventListener('mouseup', this.mouseUp.bind(this));
-    this.element.addEventListener('mouseout', this.mouseOut.bind(this));
+    this.overlayCanvas.addEventListener('mousedown', this.mouseDown.bind(this));
+    this.overlayCanvas.addEventListener('mousemove', this.mouseMove.bind(this));
+    this.overlayCanvas.addEventListener('mouseup', this.mouseUp.bind(this));
+    this.overlayCanvas.addEventListener('mouseout', this.mouseOut.bind(this));
   }
 
   mouseDown(e) {

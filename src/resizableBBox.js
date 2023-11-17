@@ -7,7 +7,7 @@ export class ResizableBBox extends BoxCraft {
       this.callback = callback;
       
       this.rect = {};
-      this.handleRadius = 5;
+      this.handleRadius = 7;
       this.dragTL = this.dragBL = this.dragTR = this.dragBR = false;
       this.dragWholeRect = false;
     }
@@ -15,9 +15,8 @@ export class ResizableBBox extends BoxCraft {
     init() {
 
       super.init();
-      this.canvas = this.element;
-      
-      this.initCanvas();
+      // this.canvas = this.element;
+      // this.initCanvas();
       this.initRect();
       this.drawRectInCanvas();
       this.attachResizeListeners();
@@ -31,10 +30,10 @@ export class ResizableBBox extends BoxCraft {
       // this.canvas.style.left = image.offsetLeft + "px";
 
       // Assuming `element` is globally available or passed to the constructor
-      this.canvas.height = this.element.height;
-      this.canvas.width = this.element.width;
-      this.canvas.style.top = this.element.offsetTop + "px";
-      this.canvas.style.left = this.element.offsetLeft + "px";
+      // this.canvas.height = this.element.height;
+      // this.canvas.width = this.element.width;
+      // this.canvas.style.top = this.element.offsetTop + "px";
+      // this.canvas.style.left = this.element.offsetLeft + "px";
     }
   
     initRect() {
@@ -45,37 +44,37 @@ export class ResizableBBox extends BoxCraft {
     }
   
     drawRectInCanvas() {
-      var ctx = this.canvas.getContext("2d");
-      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      var ctx = this.overlayCanvas.getContext("2d");
+      ctx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height);
       ctx.beginPath();
-      ctx.lineWidth = "6";
-      ctx.fillStyle = "rgba(199, 87, 231, 0.2)";
-      ctx.strokeStyle = "#c757e7";
+      ctx.lineWidth = "1";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+      ctx.strokeStyle = "#000000";
       ctx.rect(this.rect.left, this.rect.top, this.rect.width, this.rect.height);
       ctx.fill();
       ctx.stroke();
-      this.drawHandles();
+      // this.drawHandles();
     }
   
-    drawHandles() {
-      this.drawCircle(this.rect.left, this.rect.top, this.handleRadius);
-      this.drawCircle(this.rect.left + this.rect.width, this.rect.top, this.handleRadius);
-      this.drawCircle(this.rect.left + this.rect.width, this.rect.top + this.rect.height, this.handleRadius);
-      this.drawCircle(this.rect.left, this.rect.top + this.rect.height, this.handleRadius);
-    }
+    // drawHandles() {
+    //   this.drawCircle(this.rect.left, this.rect.top, this.handleRadius);
+    //   this.drawCircle(this.rect.left + this.rect.width, this.rect.top, this.handleRadius);
+    //   this.drawCircle(this.rect.left + this.rect.width, this.rect.top + this.rect.height, this.handleRadius);
+    //   this.drawCircle(this.rect.left, this.rect.top + this.rect.height, this.handleRadius);
+    // }
   
-    drawCircle(x, y, radius) {
-      var ctx = this.canvas.getContext("2d");
-      ctx.fillStyle = "#c757e7";
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, 2 * Math.PI);
-      ctx.fill();
-    }
+    // drawCircle(x, y, radius) {
+    //   var ctx = this.overlayCanvas.getContext("2d");
+    //   ctx.fillStyle = "#000000";
+    //   ctx.beginPath();
+    //   ctx.arc(x, y, radius, 0, 2 * Math.PI);
+      // ctx.fill();
+    // }
   
     attachResizeListeners() {
-      this.canvas.addEventListener('mousedown', this.mouseDown.bind(this), false);
-      this.canvas.addEventListener('mouseup', this.mouseUp.bind(this), false);
-      this.canvas.addEventListener('mousemove', this.mouseMove.bind(this), false);
+      this.overlayCanvas.addEventListener('mousedown', this.mouseDown.bind(this), false);
+      this.overlayCanvas.addEventListener('mouseup', this.mouseUp.bind(this), false);
+      this.overlayCanvas.addEventListener('mousemove', this.mouseMove.bind(this), false);
     }
   
     mouseDown(e) {
@@ -137,16 +136,19 @@ export class ResizableBBox extends BoxCraft {
       let pos = this.getMousePos(e);
       let mouseX = pos.x;
       let mouseY = pos.y;
+
+      // Update the cursor style based on mouse position
+      this.updateCursorStyle(mouseX, mouseY);
     
       if (this.dragWholeRect) {
         e.preventDefault();
         e.stopPropagation();
         let dx = mouseX - this.startX;
         let dy = mouseY - this.startY;
-        if ((this.rect.left + dx) > 0 && (this.rect.left + dx + this.rect.width) < this.canvas.width) {
+        if ((this.rect.left + dx) > 0 && (this.rect.left + dx + this.rect.width) < this.overlayCanvas.width) {
           this.rect.left += dx;
         }
-        if ((this.rect.top + dy) > 0 && (this.rect.top + dy + this.rect.height) < this.canvas.height) {
+        if ((this.rect.top + dy) > 0 && (this.rect.top + dy + this.rect.height) < this.overlayCanvas.height) {
           this.rect.top += dy;
         }
         this.startX = mouseX;
@@ -186,6 +188,20 @@ export class ResizableBBox extends BoxCraft {
       }
       this.drawRectInCanvas();
     }
+
+    updateCursorStyle(mouseX, mouseY) {
+      if (this.checkCloseEnough(mouseX, this.rect.left) && this.checkCloseEnough(mouseY, this.rect.top)) {
+          this.overlayCanvas.style.cursor = 'nwse-resize'; // Top left corner
+      } else if (this.checkCloseEnough(mouseX, this.rect.left + this.rect.width) && this.checkCloseEnough(mouseY, this.rect.top)) {
+          this.overlayCanvas.style.cursor = 'nesw-resize'; // Top right corner
+      } else if (this.checkCloseEnough(mouseX, this.rect.left) && this.checkCloseEnough(mouseY, this.rect.top + this.rect.height)) {
+          this.overlayCanvas.style.cursor = 'nesw-resize'; // Bottom left corner
+      } else if (this.checkCloseEnough(mouseX, this.rect.left + this.rect.width) && this.checkCloseEnough(mouseY, this.rect.top + this.rect.height)) {
+          this.overlayCanvas.style.cursor = 'nwse-resize'; // Bottom right corner
+      } else {
+          this.overlayCanvas.style.cursor = 'default'; // Default cursor elsewhere
+      }
+  }
     
   
     mouseUp(e) {
