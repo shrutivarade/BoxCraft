@@ -10,31 +10,34 @@ export class ResizableBBox extends BoxCraft {
       this.handleRadius = 7;
       this.dragTL = this.dragBL = this.dragTR = this.dragBR = false;
       this.dragWholeRect = false;
-    }
-  
-    init() {
-
-      super.init();
-      // this.canvas = this.element;
-      // this.initCanvas();
       this.initRect();
       this.drawRectInCanvas();
       this.attachResizeListeners();
     }
   
-    initCanvas() {
-      // // Assuming `image` is globally available or passed to the constructor
-      // this.canvas.height = image.height;
-      // this.canvas.width = image.width;
-      // this.canvas.style.top = image.offsetTop + "px";
-      // this.canvas.style.left = image.offsetLeft + "px";
+    // init() {
 
-      // Assuming `element` is globally available or passed to the constructor
-      // this.canvas.height = this.element.height;
-      // this.canvas.width = this.element.width;
-      // this.canvas.style.top = this.element.offsetTop + "px";
-      // this.canvas.style.left = this.element.offsetLeft + "px";
-    }
+    //   super.init();
+    //   // this.canvas = this.element;
+    //   // this.initCanvas();
+    //   this.initRect();
+    //   this.drawRectInCanvas();
+    //   this.attachResizeListeners();
+    // }
+  
+    // initCanvas() {
+    //   // // Assuming `image` is globally available or passed to the constructor
+    //   // this.canvas.height = image.height;
+    //   // this.canvas.width = image.width;
+    //   // this.canvas.style.top = image.offsetTop + "px";
+    //   // this.canvas.style.left = image.offsetLeft + "px";
+
+    //   // Assuming `element` is globally available or passed to the constructor
+    //   // this.canvas.height = this.element.height;
+    //   // this.canvas.width = this.element.width;
+    //   // this.canvas.style.top = this.element.offsetTop + "px";
+    //   // this.canvas.style.left = this.element.offsetLeft + "px";
+    // }
   
     initRect() {
       this.rect.height = 200;

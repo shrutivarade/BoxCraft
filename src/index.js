@@ -1,6 +1,6 @@
 import { BoxCraft } from "./boxCraft.js";
 import { ResizableBBox } from "./resizableBBox.js";
-import { BBox } from "./bBox.js";
+import { BBox } from "./draggableBBox.js";
 
 window.console.log('BoxCraft VERSION 0.1-alpha');
 

@@ -13,13 +13,15 @@ export class BBox extends BoxCraft {
     this.y1 = 0;
     this.x2 = 0;
     this.y2 = 0;
-  }
-
-  init() {
-    super.init();
     this.overlayCanvas.style.cursor = 'crosshair'; // Set the cursor to crosshair
     this.attachEventListeners();
   }
+
+  // init() {
+  //   super.init();
+  //   this.overlayCanvas.style.cursor = 'crosshair'; // Set the cursor to crosshair
+  //   this.attachEventListeners();
+  // }
 
   attachEventListeners() {
     this.overlayCanvas.addEventListener('mousedown', this.mouseDown.bind(this));
