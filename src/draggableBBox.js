@@ -1,6 +1,6 @@
 import { BoxCraft } from "./boxCraft.js";
 
-export class BBox extends BoxCraft {
+export class DraggableBBox extends BoxCraft {
   
   constructor(element, callback) {
     super(element);
@@ -13,15 +13,12 @@ export class BBox extends BoxCraft {
     this.y1 = 0;
     this.x2 = 0;
     this.y2 = 0;
+    
+    super.init();
+
     this.overlayCanvas.style.cursor = 'crosshair'; // Set the cursor to crosshair
     this.attachEventListeners();
   }
-
-  // init() {
-  //   super.init();
-  //   this.overlayCanvas.style.cursor = 'crosshair'; // Set the cursor to crosshair
-  //   this.attachEventListeners();
-  // }
 
   attachEventListeners() {
     this.overlayCanvas.addEventListener('mousedown', this.mouseDown.bind(this));
