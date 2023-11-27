@@ -13,6 +13,7 @@ Boxcraft is working with ResizableBB and DraggableBB. and the delete button dele
 Develop Boxcraft to delete the selected/desired BBox.
 
 ToDo: 
+
       1. Design landing page (index.html)
 
       2. examples/index.html for ResizableBB and draggableBB
