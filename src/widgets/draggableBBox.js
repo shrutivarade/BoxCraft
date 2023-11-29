@@ -1,6 +1,6 @@
-import { BoxCraft } from "./boxCraft.js";
+import { Widget } from "../widget.js";
 
-export class DraggableBBox extends BoxCraft {
+export class DraggableBBox extends Widget {
   
   constructor(element, callback) {
     super(element);
