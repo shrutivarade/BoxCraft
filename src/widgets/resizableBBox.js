@@ -1,17 +1,20 @@
-import { BoxCraft } from "./boxCraft.js";
+import { Widget } from "../widget.js";
 
-export class ResizableBBox extends BoxCraft {
+export class ResizableBBox extends Widget {
 
   constructor(element, callback) {
-    super(element);
-    this.callback = callback;
+    super(element, callback);
     
     this.rect = {};
     this.handleRadius = 1;
     this.dragTL = this.dragBL = this.dragTR = this.dragBR = false;
     this.dragWholeRect = false;
 
+    console.log('hello');
+
     super.init();
+
+
     this.initRect();
     this.drawRectInCanvas();
     this.attachResizeListeners();
