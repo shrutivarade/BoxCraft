@@ -1,13 +1,15 @@
 <html>
 <head>
 
-    <title>ResizableBBox Example</title>
+    <title>DraggableBBox Example</title>
 
     <script async type="module" src="../dist/boxCraft.min.js"></script>
 
     <script type="text/javascript">
+        
         window.onload = function() {
-            
+
+
             // load image and display on canvas
             const canvasElement = document.getElementById('boxCanvas');
             const ctx = canvasElement.getContext('2d');
@@ -19,17 +21,21 @@
             image.onload = function() {
                 ctx.drawImage(image, 0, 0, window.innerWidth, window.innerHeight);
             };
-    
+
             // setup bbox
-            BoxCraft.createResizableBBox(document.getElementById('boxCanvas'), function(topleft, bottomright) {
+            BoxCraft.createDraggableBBox(document.getElementById('boxCanvas'), function(topleft, bottomright) {
+
                 console.log(topleft, bottomright);
+
             });
+
+
         }
+
     </script>
-    
 
 </head>
 <body>
-<canvas id="boxCanvas"></canvas>
+<canvas id="boxCanvas" style="border:1px solid #000;"></canvas>
 </body>
 </html>

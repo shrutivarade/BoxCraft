@@ -1,46 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+    <script async type="module" src="../dist/boxCraft.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoxCraft Library</title>
-    <style>
-        /* Set the style for the body to remove default margin */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-        /* Ensure that the canvas fills the width and the remaining height */
-        #boxCanvas {
-            display: block; /* Removes default margin for canvas */
-            width: 100vw; /* 100% of the viewport width */
-            height: calc(100vh - 40px); /* Remaining height taking button height into account */
-            border: 1px solid black; /* Optional: just to show canvas boundaries */
-        }
-        /* Style for the button container */
-        .button-container {
-            text-align: center; /* Center align the buttons */
-            padding: 10px; /* Add some padding around the buttons */
-            background-color: #f8f8f8; /* Give the button container a background color */
-        }
-        /* Style for buttons */
-        button {
-            margin: 5px;
-            padding: 10px 20px;
-        }
-
-    </style>
-
-    <script async type="module" src="src/index.js"></script>
+    <title>BoxCraft.js</title>
 </head>
 <body>
-    <h1>Welcome to BoxCraft!</h1>
-    <div class="button-container">
-        <button id="createResizableBox">Create Resizable Box</button>
-        <button id="createBoundingBox">Create Bounding Box</button>
-        <button id="deletebtn">Delete Latest BBox</button>
+    <div class="header">
+        <div class="logo">
+            <img src='./gfx/logo.png' alt="Logo">
+            <h1> BoxCraft.js </h1>
+        </div>
+        <div class="github-logo">
+            <a href= "https://github.com/shrutivarade/BoxCraft" target="_blank">
+                <!-- <img src="GitHub_Logo.png"> -->
+                <img src="./gfx/github-mark.png">
+                <h1> GitHub </h1>
+
+            </a>
+        </div>
     </div>
-    <canvas id="boxCanvas" style="border:1px solid #000;"></canvas>
+
+    <div class="main">
+
+        <div class="example">
+            <div class="example-title">
+                <h1> Examples </h1>
+            </div>
+            <div class="canvas-container">
+                <div class="canvas-label" style="position: absolute; top: 10px; left: 10px;">Resizable BBox</div>
+                <canvas id="canvas1" class="example-canvas"></canvas>
+            </div>
+
+            <div class="canvas-container">
+                <div class="canvas-label" style="position: absolute; top: 10px; left: 10px;">Draggable BBox</div>
+                <canvas id="canvas2" class="example-canvas"></canvas>
+            </div>
+
+        </div>
+        
+
+        <div class="documentation">
+            <div class="example-title">
+                <h1> Documentation </h1>
+            </div>
+        
+            <!-- Definition Section -->
+            <div class="definition-section">
+                <h2>What is BoxCraft?</h2>
+                <p>BoxCraft is a powerful and easy-to-use library that allows developers to create and manipulate bounding boxes for image annotation and processing applications on any DOM element.</p>
+            </div>
+        
+            <!-- Installation Section -->
+            <div class="installation-section">
+                <h2>Installation</h2>
+                <code class="code-snippet">
+                    <span class="code-keyword">&lt;script</span> <span class="code-attribute">type</span>=<span class="code-string">&quot;text/javascript&quot;</span> <span class="code-attribute">src</span>=<span class="code-string">&quot;https://boostlet.org/dist/boostlet.min.js&quot;</span><span class="code-keyword">&gt;&lt;/script&gt;</span>
+                </code>
+            
+                <h3>ResizableBBox</h3>
+                <code class="code-snippet">
+                    <span class="code-function">BoxCraft.createResizableBBox</span>(<span class="code-function">document.getElementById</span>(<span class="code-string">&apos;canvas1&apos;</span>), <span class="code-function">function</span>(topleft, bottomright) {<br>
+                        <span class="code-function">console.log</span>(topleft, bottomright);<br>
+                    });
+                </code>
+            
+                <h3>DraggableBBox</h3>
+                <code class="code-snippet">
+                    <span class="code-function">BoxCraft.createDraggableBBox</span>(<span class="code-function">document.getElementById</span>(<span class="code-string">&apos;canvas2&apos;</span>), <span class="code-function">function</span>(topleft, bottomright) {<br>
+                        <span class="code-function">console.log</span>(topleft, bottomright);<br>
+                    });
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="footer">
+
+    </div> -->
 </body>
 </html>

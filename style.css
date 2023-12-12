@@ -1,0 +1,249 @@
+/* * {
+    font-family: "Lucida", cursive;
+} */
+
+code {
+    font-family: "Courier New", monospace;
+}
+
+html,
+body {
+    /* margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;*/
+    overflow: auto; 
+
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    color: #fff;
+    text-align: center;
+    padding: 0px 20px 0px 20px;
+    /* position: sticky; */
+    top: 0;
+    /* z-index: 1; */
+    display: flex;
+    justify-content: space-between; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+    /* border-bottom: 1px solid grey; */
+    /* padding-bottom: 0px; */
+    height: auto; /* Removes any fixed height setting */
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    height: 10%;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
+.logo {
+    display: flex; /* Allow horizontal alignment */
+    align-items: center; /* Center vertically within .logo */
+    justify-content: center; /* Center items horizontally if needed */
+}
+
+.logo img {
+    height: 50px; /* Adjust the height as needed */
+}
+
+.logo h1 {
+    color: black;
+    margin: 15px;
+}
+
+.github-logo {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally if needed */
+}
+
+.github-logo a {
+    display: flex; /* Align the image and text horizontally */
+    align-items: center; /* Center the items vertically */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.github-logo img {
+    height: 50px; /* Adjust the height as needed */
+    margin-right: 10px; /* Space between the logo and the text */
+}
+
+.github-logo h1 {
+    color: black; /* Color for the GitHub text */
+    font-size: 24px; /* Adjust the size as needed */
+    margin: 0; /* Remove default margin */
+}
+
+
+
+
+
+
+
+.main {
+    display: flex; /* Use flexbox for direct children */
+    flex-direction: row; /* Align children in a row */
+    height: 100%; /* Take up full container height */
+    padding: 10px;
+    padding-top: 0px;
+    
+}
+
+.example, .documentation {
+    flex-basis: 50%; /* Each takes up 50% of the .main container */
+    height: 95%; /* Take up full height of their container */
+    margin: 10px;
+    border: 2px solid #fff; /* Black border with a default width */
+    border-radius: 5px; /* Slight border-radius */
+    /* padding: 10px; */
+}
+
+
+.example-title {
+    text-align: center; /* Centers the title */
+    margin-bottom: 10px; /* Adds some space below the title */
+}
+
+.example-canvas {
+    display: block; /* Ensures the canvas is a block-level element */
+    width: 100%; /* Sets the width equal to that of its parent */
+    margin: 10px 0; /* Adds vertical margin for spacing */
+    background-color: #ddd; /* A placeholder background color */
+    /* Set a specific height for your canvases or they will be 0px tall since they don't have intrinsic dimensions */
+    height: 350px; /* Example height, adjust as needed */
+    border: 2px solid #b0b0b0; /* Black border with a default width */
+    border-radius: 5px; /* Slight border-radius */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.canvas-container {
+    position: relative; /* Establish a containing block for absolute positioning */
+    margin: 10px; /* Space around the canvas and label */
+    
+}
+
+.canvas-label {
+    position: absolute; /* Absolute position relative to its container */
+    top: 10px; /* Margin from the top of the container */
+    left: 10px; /* Margin from the left of the container */
+    background-color: #f7f7f7; /* Light background for the label */
+    color: #333; /* Text color */
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 10; /* Ensure it sits above the canvas */
+    font-size: 0.8em; /* Adjust font size as needed */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow for depth */
+}
+
+.example-canvas {
+    /* Styles for the canvas */
+    border: 2px solid #b0b0b0; /* Border to show the bounds of the canvas */
+    border-radius: 5px; /* Slight border-radius */
+    /* Add any additional styling for the canvas */
+}
+
+
+.definition-section, .installation-section {
+    margin: 20px;
+    padding: 10px;
+    background: #f9f9f9; /* Light grey background */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* subtle shadow for depth */
+}
+
+.definition-section h2, .installation-section h2 {
+    color: #333;
+}
+
+.definition-section p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.installation-section code {
+    display: block;
+    background: #333; /* Dark background for contrast */
+    color: #fff; /* White text color */
+    padding: 10px;
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+}
+
+
+.code-snippet {
+    background-color: #282c34; /* Dark background for better contrast */
+    color: #abb2bf; /* Default text color */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.code-keyword {
+    color: #c678dd;
+}
+
+.code-attribute {
+    color: #d19a66;
+}
+
+.code-string {
+    color: #98c379;
+}
+
+.code-function {
+    color: #61afef;
+}
+
+
+
+
+
+
+
+
+/* Mobile styles */
+@media (max-width: 767px) {
+    .header,
+    .main {
+        flex-direction: column; /* Stack children vertically */
+    }
+
+    .logo,
+    .github-logo,
+    .example,
+    .documentation {
+        flex-basis: auto; /* Allow the divs to auto adjust their height */
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Adjust margin as needed, remove horizontal margins */
+    }
+
+    /* Adjust the .header alignment to stack logo and GitHub logo */
+    .header {
+        flex-wrap: wrap; /* Enable the header to wrap items */
+        justify-content: center; /* Center items when wrapped */
+    }
+
+    /* Since .example and .documentation are now stacked, you don't need the 50% basis */
+    .example, .documentation {
+        flex-grow: 1; /* Let them grow to fill the space if needed */
+        border: 2px solid black; /* Maintain the border */
+        border-radius: 5px; /* Maintain the border-radius */
+        margin: 10px; /* Add some margin */
+        width: auto; /* Let them take up the available width */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    /* Other styles for .one, .two etc. can remain the same */
+}

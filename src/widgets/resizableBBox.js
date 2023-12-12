@@ -6,11 +6,9 @@ export class ResizableBBox extends Widget {
     super(element, callback);
     
     this.rect = {};
-    this.handleRadius = 1;
+    this.handleRadius = 2;
     this.dragTL = this.dragBL = this.dragTR = this.dragBR = false;
     this.dragWholeRect = false;
-
-    console.log('hello');
 
     super.init();
 
@@ -21,10 +19,15 @@ export class ResizableBBox extends Widget {
   }
   
   initRect() {
-    this.rect.height = 200;
-    this.rect.width = 200;
-    this.rect.left = (window.innerWidth - this.rect.width) / 2;
-    this.rect.top = (window.innerHeight - this.rect.height) / 2;
+    this.rect.height = 50;
+    this.rect.width = 50;
+    // this.rect.left = (window.innerWidth - this.rect.width) / 2;
+    // this.rect.top = (window.innerHeight - this.rect.height) / 2;
+
+
+    this.rect.left = (this.element.width - this.rect.width) / 2;
+    this.rect.top = (this.element.height - this.rect.height) / 2;
+
   }
 
   drawRectInCanvas() {

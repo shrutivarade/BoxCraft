@@ -38,7 +38,7 @@ export class DraggableBBox extends Widget {
 
   mouseMove(e) {
     if (!this.isDrawing) return;
-    this.ctx.clearRect(0, 0, this.element.width, this.element.height); // Clear canvas
+    this.ctx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height); // Clear canvas
     let width = e.offsetX - this.startX;
     let height = e.offsetY - this.startY;
     this.ctx.strokeRect(this.startX, this.startY, width, height);
