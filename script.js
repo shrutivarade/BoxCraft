@@ -1,5 +1,5 @@
-window.onload = function() {
 
+window.onload = function() {
 
     // load image and display on canvas
     const canvas1 = document.getElementById('canvas1');
@@ -33,10 +33,6 @@ window.onload = function() {
     };
 
 
-    
-
-
-
     // load image and display on canvas
     const canvas2 = document.getElementById('canvas2');
     const ctx2 = canvas2.getContext('2d');
@@ -64,8 +60,6 @@ window.onload = function() {
         BoxCraft.createDraggableBBox(document.getElementById('canvas2'), function(topleft, bottomright) {
             console.log(topleft, bottomright);
         });
-
-
     };
 
 }
