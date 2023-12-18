@@ -31,23 +31,23 @@ export class DraggableBBox extends Widget {
     this.startX = e.offsetX;
     this.startY = e.offsetY;
     this.isDrawing = true;
-    this.x1 = e.clientX;
-    this.y1 = e.clientY;
-    console.log("Mouse down at: ", this.startX, this.startY);
+    this.x1 = e.clientX  * window.devicePixelRatio ;
+    this.y1 = e.clientY  * window.devicePixelRatio ;
+    console.log("Mouse down at: ", this.x1, this.y1);
   }
 
   mouseMove(e) {
     if (!this.isDrawing) return;
     this.ctx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height); // Clear canvas
     let width = e.offsetX - this.startX;
-    let height = e.offsetY - this.startY;
-    this.ctx.strokeRect(this.startX, this.startY, width, height);
+    let height = e.offsetY  - this.startY;
+    this.ctx.strokeRect(this.startX , this.startY, width, height);
   }
 
   mouseUp(e) {
     this.isDrawing = false;
-    this.x2 = e.clientX;
-    this.y2 = e.clientY;
+    this.x2 = e.clientX  * window.devicePixelRatio ;
+    this.y2 = e.clientY  * window.devicePixelRatio ;
     console.log("Mouse up at: ", this.x2, this.y2);
     this.storeCoordinates();
   }
@@ -55,6 +55,9 @@ export class DraggableBBox extends Widget {
   mouseOut() {
     if (this.isDrawing) {
       // Store coordinates also when the mouse accidentally leaves the canvas
+      this.x2 = e.clientX  * window.devicePixelRatio ;
+      this.y2 = e.clientY  * window.devicePixelRatio ;
+      console.log("Mouse out at: ", this.x2, this.y2);
       this.storeCoordinates();
     }
     this.isDrawing = false;

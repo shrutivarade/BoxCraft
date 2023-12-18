@@ -238,7 +238,7 @@ body {
     /* Since .example and .documentation are now stacked, you don't need the 50% basis */
     .example, .documentation {
         flex-grow: 1; /* Let them grow to fill the space if needed */
-        border: 2px solid black; /* Maintain the border */
+        /* border: 2px solid black; Maintain the border */
         border-radius: 5px; /* Maintain the border-radius */
         margin: 10px; /* Add some margin */
         width: auto; /* Let them take up the available width */

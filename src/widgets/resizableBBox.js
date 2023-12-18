@@ -128,7 +128,7 @@ export class ResizableBBox extends Widget {
       e.preventDefault();
       e.stopPropagation();
       let newSide = (Math.abs(this.rect.left + this.rect.width - mouseX) + Math.abs(this.rect.height + this.rect.top - mouseY)) / 2;
-      if (newSide > 150) {
+      if (newSide > 50) {
         this.rect.left = this.rect.left + this.rect.width - newSide;
         this.rect.top = this.rect.height + this.rect.top - newSide;
         this.rect.width = this.rect.height = newSide;
@@ -137,7 +137,7 @@ export class ResizableBBox extends Widget {
       e.preventDefault();
       e.stopPropagation();
       let newSide = (Math.abs(mouseX - this.rect.left) + Math.abs(this.rect.height + this.rect.top - mouseY)) / 2;
-      if (newSide > 150) {
+      if (newSide > 50) {
         this.rect.top = this.rect.height + this.rect.top - newSide;
         this.rect.width = this.rect.height = newSide;
       }
@@ -145,7 +145,7 @@ export class ResizableBBox extends Widget {
       e.preventDefault();
       e.stopPropagation();
       let newSide = (Math.abs(this.rect.left + this.rect.width - mouseX) + Math.abs(this.rect.top - mouseY)) / 2;
-      if (newSide > 150) {
+      if (newSide > 50) {
         this.rect.left = this.rect.left + this.rect.width - newSide;
         this.rect.width = this.rect.height = newSide;
       }
@@ -153,7 +153,7 @@ export class ResizableBBox extends Widget {
       e.preventDefault();
       e.stopPropagation();
       let newSide = (Math.abs(mouseX - this.rect.left) + Math.abs(mouseY - this.rect.top)) / 2;
-      if (newSide > 150) {
+      if (newSide > 50) {
         this.rect.width = this.rect.height = newSide;
       }
     }
