@@ -28,26 +28,26 @@ export class DraggableBBox extends Widget {
   }
 
   mouseDown(e) {
-    this.startX = e.offsetX;
-    this.startY = e.offsetY;
+    this.startX = e.offsetX * window.devicePixelRatio;
+    this.startY = e.offsetY * window.devicePixelRatio;
     this.isDrawing = true;
-    this.x1 = e.clientX;
-    this.y1 = e.clientY;
+    this.x1 = e.clientX * window.devicePixelRatio;
+    this.y1 = e.clientY * window.devicePixelRatio;
     console.log("Mouse down at: ", this.startX, this.startY);
   }
 
   mouseMove(e) {
     if (!this.isDrawing) return;
     this.ctx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height); // Clear canvas
-    let width = e.offsetX - this.startX;
-    let height = e.offsetY - this.startY;
-    this.ctx.strokeRect(this.startX, this.startY, width, height);
+    let width = e.offsetX * window.devicePixelRatio - this.startX * window.devicePixelRatio;
+    let height = e.offsetY * window.devicePixelRatio - this.startY * window.devicePixelRatio;
+    this.ctx.strokeRect(this.startX * window.devicePixelRatio, this.startY * window.devicePixelRatio, width, height);
   }
 
   mouseUp(e) {
     this.isDrawing = false;
-    this.x2 = e.clientX;
-    this.y2 = e.clientY;
+    this.x2 = e.clientX * window.devicePixelRatio;
+    this.y2 = e.clientY * window.devicePixelRatio;
     console.log("Mouse up at: ", this.x2, this.y2);
     this.storeCoordinates();
   }
