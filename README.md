@@ -3,6 +3,10 @@
 ## Introduction
 BoxCraft.js is a JavaScript library designed to provide interactive bounding box tools for web-based applications. It offers draggable and resizable boxes that can be used in various domains, particularly in web-based image annotation and processing.
 
+###Presentation
+https://slides.com/rohinideshmukh/boxcraftjsintegratedwithboostletjs/
+
+
 <img width="1470" alt="image" src="https://github.com/shrutivarade/BoxCraft/assets/37963866/df414f36-d87d-4333-b0e0-6f949c626b34">
 
 
